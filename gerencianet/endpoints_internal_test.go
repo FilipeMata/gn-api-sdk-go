@@ -42,5 +42,12 @@ func Test_endpoints(t *testing.T) {
 	endpoints.CancelParcel(1, 1)
 	endpoints.ChargeLink(1, nil)
 	endpoints.UpdateChargeLink(1, nil)
+	endpoints.UpdatePlan(1, nil)
+	endpoints.CreateSubscriptionHistory(1, nil)
+	endpoints.CreateChargeBalanceSheet(1, nil)
+	endpoints.SettleCarnetParcel(1, 1)
+	endpoints.SettleCharge(1)
+
+
 	t.Skip("skipping endpoints tests")
 }
