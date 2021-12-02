@@ -1,24 +1,32 @@
 # gn-api-sdk-go
 
-> A go library for integration of your backend with the Gerencianet payment services.
+> A go library for integration of your backend with the payment services
+provided by [Gerencianet](http://gerencianet.com.br).
+
+[![Build Status](https://travis-ci.org/gerencianet/gn-api-sdk-go.svg)](https://travis-ci.org/gerencianet/gn-api-sdk-go)
+[![Coverage Status](https://coveralls.io/repos/github/gerencianet/gn-api-sdk-go/badge.svg?branch=master)](https://coveralls.io/github/gerencianet/gn-api-sdk-go?branch=master)
 
 ## Installation
 
 Install with:
 
 ```bash
-$ go get github.com/FilipeMata/gn-api-sdk-go/gerencianet
+
+$ go get github.com/gerencianet/gn-api-sdk-go/gerencianet
+$ go mod init github.com/gerencianet/gn-api-sdk-go
 ```
 ## Tested with
 ```
-go 1.8
+go 1.8, 1.11.4 and 1.16.5
+
 ```
 ## Basic usage
 
 ```go
 
 import (
-    "github.com/FilipeMata/gn-api-sdk-go/gerencianet"
+    "github.com/gerencianet/gn-api-sdk-go/gerencianet"
+	"github.com/gerencianet/gn-api-sdk-go/examples/configs"
 )
 
 credentials := map[string]interface{} {
@@ -48,7 +56,7 @@ res, err := gn.CreateCharge(body)
 
 ## Examples
 
-You can run the examples inside `examples` with
+You can run the examples inside `_examples` with
 `$ go run example.go`:
 
 ```bash

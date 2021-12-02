@@ -12,6 +12,10 @@ func (endpoints endpoints) CreateCharge(body map[string]interface{}) (string, er
 	return endpoints.requester.request("/charge", "POST", nil, body)
 }
 
+func (endpoints endpoints) CreateChargeOneStep(body map[string]interface{}) (string, error) {
+	return endpoints.requester.request("/charge/one-step", "POST", nil, body)
+}
+
 func (endpoints endpoints) DetailCharge(chargeID int) (string, error) {
 	params := map[string]string{ "id": strconv.Itoa(chargeID) }
 	return endpoints.requester.request("/charge/:id", "GET", params, nil)
@@ -163,4 +167,32 @@ func (endpoints endpoints) ChargeLink(chargeID int, body map[string]interface{})
 func (endpoints endpoints) UpdateChargeLink(chargeID int, body map[string]interface{}) (string, error) {
 	params := map[string]string{ "id": strconv.Itoa(chargeID) }
 	return endpoints.requester.request("/charge/:id/link", "PUT", params, body)
+}
+
+func (endpoints endpoints) CreateSubscriptionHistory(subscriptionID int, body map[string]interface{}) (string, error) {
+	params := map[string]string{ "id": strconv.Itoa(subscriptionID) }
+	return endpoints.requester.request("/subscription/:id/history", "POST", params, body)
+}
+
+func (endpoints endpoints) UpdatePlan(planID int, body map[string]interface{}) (string, error) {
+	params := map[string]string{ "id": strconv.Itoa(planID) }
+	return endpoints.requester.request("/plan/:id", "PUT", params, body)
+}
+
+func (endpoints endpoints) CreateChargeBalanceSheet(chargeID int, body map[string]interface{}) (string, error) {
+	params := map[string]string{ "id": strconv.Itoa(chargeID) }
+	return endpoints.requester.request("/charge/:id/balance-sheet", "POST", params, body)
+}
+
+func (endpoints endpoints) SettleCarnetParcel(carnetID int, parcel int) (string, error) {
+	params := map[string]string{ 
+		"id": strconv.Itoa(carnetID),
+		"parcel": strconv.Itoa(parcel),
+	}
+	return endpoints.requester.request("/carnet/:id/parcel/:parcel/settle", "PUT", params, nil)
+}
+
+func (endpoints endpoints) SettleCharge(chargeID int) (string, error) {
+	params := map[string]string{ "id": strconv.Itoa(chargeID) }
+	return endpoints.requester.request("/charge/:id/settle", "PUT", params, nil)
 }
